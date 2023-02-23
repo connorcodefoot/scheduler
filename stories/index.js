@@ -213,5 +213,4 @@ storiesOf("Appointment", module)
   )
 
 
-// Appointments - Header
 
