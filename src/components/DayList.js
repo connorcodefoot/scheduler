@@ -10,9 +10,9 @@ export default function DayList(props) {
       key={days.id}
       name={days.name}
       spots={days.spots}
-      setDay={props.setDay}
-      day={props.day}
-      selected={props.day === days.name ? true : false}
+      onChange={props.onChange}
+      value={props.value}
+      selected={props.value === days.name}
       />;
   });
 

@@ -24,7 +24,7 @@ export default function DayListItem(props) {
   })
 
   const selectedDay = function () {
-    return props.setDay(props.name)
+    return props.onChange(props.name)
   }
 
 
