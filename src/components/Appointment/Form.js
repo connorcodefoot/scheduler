@@ -17,20 +17,19 @@ export default function Form (props) {
 
   const cancel = () => {
     reset()
-    return props.onCancel
   }
 
   return (
     <main className="appointment__card appointment__card--create">
   <section className="appointment__card-left">
-    <form autoComplete="off">
+    <form onSubmit={event => event.preventDefault()} autoComplete="off">
       <input
         className="appointment__create-input text--semi-bold"
         name="name"
         type="text"
         placeholder="Enter Student Name"
         value = {student}
-        onChange={setStudent}
+        onChange={(event) => {setStudent(event.target.value)}}
       />
     </form>
     <InterviewerList
