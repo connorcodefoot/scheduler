@@ -5,8 +5,6 @@ import "components/DayListItem.scss";
 
 export default function DayListItem(props) {
 
-  console.log(props.day)
-
 
   const formatSpots = (props) => {
     if (props.spots === 0) {
@@ -25,6 +23,7 @@ export default function DayListItem(props) {
 
   const selectedDay = function () {
     return props.onChange(props.name)
+
   }
 
 
