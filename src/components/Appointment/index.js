@@ -17,6 +17,14 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    return props.bookInterview(props.id, interview)
+  }
+
   return (
     <article className="appointment">
       <Fragment>
@@ -35,6 +43,7 @@ export default function Appointment(props) {
           value={''}
           student={''}
           onCancel={() => back(EMPTY)}
+          onSave={save}
           />
         )}
       </Fragment>
