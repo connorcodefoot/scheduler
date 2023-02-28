@@ -21,8 +21,6 @@ export default function Application(props) {
 
   function bookInterview(id, interview) {
     
-    console.log(id, interview);
-    
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
