@@ -7,48 +7,6 @@ import Appointment from "components/Appointment";
 import Axios from "axios";
 import { getAppointmentsForDay, getInterview, getInterviewersByDay } from "helpers/selectors";
 
-
-// const appointments = {
-//   "1": {
-//     id: 1,
-//     time: "12pm",
-//   },
-//   "2": {
-//     id: 2,
-//     time: "1pm",
-//     interview: {
-//       student: "Lydia Miller-Jones",
-//       interviewer: {
-//         id: 3,
-//         name: "Sylvia Palmer",
-//         avatar: "https://i.imgur.com/LpaY82x.png",
-//       }
-//     }
-//   },
-//   "3": {
-//     id: 3,
-//     time: "2pm",
-//   },
-//   "4": {
-//     id: 4,
-//     time: "3pm",
-//     interview: {
-//       student: "Archie Andrews",
-//       interviewer: {
-//         id: 4,
-//         name: "Cohana Roy",
-//         avatar: "https://i.imgur.com/FK8V841.jpg",
-//       }
-//     }
-//   },
-//   "5": {
-//     id: 5,
-//     time: "4pm",
-//   }
-// };
-
-
-
 export default function Application(props) {
 
   const setDay = day => { setState({ ...state, day });}
@@ -79,8 +37,13 @@ export default function Application(props) {
       ...state,
       appointments
     })
-
     return Axios.put(`/api/appointments/${id}`, {interview})
+  }
+        
+
+  function deleteInterview(id) {
+
+    return Axios.delete(`/api/appointments/${id}`)
   }
 
   const appointments = getAppointmentsForDay(state, state.day);
@@ -97,10 +60,11 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        deleteInterview={deleteInterview}
+        getInterview={getInterview}
       />
     );
   });
-
 
   useEffect(() => {
 
