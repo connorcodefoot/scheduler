@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { useState } from "react";
 import "components/Application.scss";
 import DayList from "./DayList";
@@ -45,7 +44,8 @@ export default function Application(props) {
   }
 
   const appointments = getAppointmentsForDay(state, state.day);
-  const interviewers = getInterviewersByDay(state, state.day )
+
+  const interviewers = getInterviewersByDay(state, state.day);
 
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
@@ -63,23 +63,6 @@ export default function Application(props) {
       />
     );
   });
-
-  useEffect(() => {
-
-    Promise.all([
-      Axios.get('/api/days'),
-      Axios.get('/api/appointments'),
-      Axios.get('/api/interviewers')
-    ])
-    .then((all) => {
-      setState({
-        days: all[0].data,
-        appointments: all[1].data,
-        interviewers: all[2].data
-      })
-    })
-  }, []);
-
 
   return (
     <main className="layout">
