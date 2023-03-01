@@ -29,16 +29,12 @@ export default function Appointment(props) {
 
   function save(name, interviewer) {
 
-    transition(SAVING);
+    transition(SAVING)
 
     const interview = {
       student: name,
       interviewer
     };
-
-    // const bookInterview = new Promise(() => {
-    //   props.bookInterview(props.id, interview);
-    // });
 
     props.bookInterview(props.id, interview)
       .then((res) => {
@@ -85,7 +81,7 @@ export default function Appointment(props) {
   }
 
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Fragment>
         <Header time={props.time} />
         {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
@@ -108,9 +104,14 @@ export default function Appointment(props) {
             onSave={save}
           />
         )}
-        {(mode === SAVING || mode === DELETING) && (
+        {(mode === SAVING) && (
           <Status
-            message={props.message}
+            message="Saving"
+          />
+        )}
+        {(mode === DELETING) && (
+          <Status
+            message="Deleting"
           />
         )}
         {mode === CONFIRM && (
