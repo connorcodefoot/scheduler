@@ -14,11 +14,11 @@ const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
 const SAVING = "SAVING";
-const DELETING = "DELETING"
+const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
 const EDIT = "EDIT";
 const ERROR_SAVE = "ERROR_SAVE";
-const ERROR_DELETE = "ERROR_DELETE"
+const ERROR_DELETE = "ERROR_DELETE";
 
 
 export default function Appointment(props) {
@@ -28,35 +28,60 @@ export default function Appointment(props) {
   );
 
   function save(name, interviewer) {
+
+    transition(SAVING);
+
     const interview = {
       student: name,
       interviewer
     };
-    transition(SAVING);
+
+    // const bookInterview = new Promise(() => {
+    //   props.bookInterview(props.id, interview);
+    // });
+
     props.bookInterview(props.id, interview)
       .then((res) => {
-        return transition(SHOW);
-      })
-      .catch((error) => {
-        return transition(ERROR_SAVE, true);
-      })
-      
+        if (res === 'error') {
+          transition(ERROR_SAVE, true);
+        }
+        else {
+          transition(SHOW);
+        }
+      });
   };
 
   function cancelInterview(id) {
 
     transition(DELETING, true);
+
     props.cancelInterview(id)
-      .then(() => {
-        return transition(EMPTY);
-      })
-      .catch(error => {
-        return transition(ERROR_DELETE, true);
-      })
+      .then((res) => {
+        if (res === 'error') {
+          return transition(ERROR_DELETE, true);
+        }
+        else {
+          transition(EMPTY);
+        }
+      });
   }
 
-  function editInterview() {
-    transition(EDIT)
+  function editInterview(name, interviewer) {
+
+    const interview = {
+      student: name,
+      interviewer
+    };
+
+    props.editInterview(props.id, interview)
+      .then((res) => {
+        if (res === 'error') {
+          return transition(ERROR_SAVE, true);
+        }
+        else {
+          return transition(SHOW);
+        }
+      });
   }
 
   return (
@@ -70,7 +95,7 @@ export default function Appointment(props) {
             interviewer={props.interview.interviewer}
             id={props.id}
             onDelete={() => transition(CONFIRM)}
-            onEdit={editInterview}
+            onEdit={() => transition(EDIT)}
           />
         )}
         {mode === CREATE && (
@@ -103,14 +128,14 @@ export default function Appointment(props) {
             value={props.interview.student}
             student={props.interview.student}
             onCancel={() => back()}
-            onSave={save}
+            onSave={editInterview}
           />
         )}
 
         {(mode === ERROR_DELETE || mode === ERROR_SAVE) && (
           <Error
-          message={props.message}
-          onClose={() => back()}
+            message={props.message}
+            onClose={() => back()}
           />
 
         )}

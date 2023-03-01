@@ -33,58 +33,88 @@ export default function useApplicationData() {
       });
   }, []);
 
-  function bookInterview(id, interview) {
-
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
-    };
-
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
-
-    const days = updateSpots(id, 'remove')
-
-    setState({
-      ...state,
-      appointments,
-      days,
-    });
+  function editInterview(id, interview) {
 
     return Axios.put(`/api/appointments/${id}`, { interview })
+      .then((res) => {
+
+        const appointment = {
+          ...state.appointments[id],
+          interview: { ...interview }
+        };
+
+        const appointments = {
+          ...state.appointments,
+          [id]: appointment
+        };
+
+        setState({
+          ...state,
+          appointments,
+        });
+      })
+      .catch((err) => {return 'error'});
+  }
+
+  function bookInterview(id, interview) {
+
+    return Axios.put(`/api/appointments/${id}`, { interview })
+      .then((res) => {
+
+        const appointment = {
+          ...state.appointments[id],
+          interview: { ...interview }
+        };
+
+        const appointments = {
+          ...state.appointments,
+          [id]: appointment
+        };
+
+        const days = updateSpots(id, 'remove');
+
+        setState({
+          ...state,
+          appointments,
+          days
+        });
+      })
+      .catch((err) => {return 'error'});
   }
 
 
   function cancelInterview(id) {
 
-    const days = updateSpots(id, 'add')
+    return Axios.delete(`/api/appointments/${id}`)
+      .then((res) => {
 
-    setState({
-      ...state,
-      days,
-    });
+        const days = updateSpots(id, 'add');
 
-    return Axios.delete(`/api/appointments/${id}`);
+        setState({
+          ...state,
+          days
+        });
+
+      })
+      .catch((err) => {return 'error'});
   }
 
   function updateSpots(id, action) {
 
-    const stateCopy = {...state}
-    
+    const stateCopy = { ...state };
+
     stateCopy.days.forEach((day) => {
-    
-      if(day.appointments.includes(id) && action === 'remove') {
-        day.spots--
+
+      if (day.appointments.includes(id) && action === 'remove') {
+        day.spots--;
       }
 
-      if(day.appointments.includes(id) && action === 'add') {
-        day.spots++
+      if (day.appointments.includes(id) && action === 'add') {
+        day.spots++;
       }
-      
-    })
-    return stateCopy.days
+
+    });
+    return stateCopy.days;
   }
 
   return {
@@ -92,5 +122,6 @@ export default function useApplicationData() {
     setDay,
     bookInterview,
     cancelInterview,
+    editInterview
   };
 }
