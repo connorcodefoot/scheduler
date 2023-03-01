@@ -63,7 +63,14 @@ export default {
       })
     }
   }),
-  
+  delete: jest.fn(() => { {
+      return Promise.resolve({
+        status: 200,
+        statusText: "Okay",
+      })
+    }
+  }),
+
   get: jest.fn(url => {
     if (url === "/api/days") {
       return Promise.resolve({
