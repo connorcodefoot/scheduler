@@ -31,9 +31,10 @@ npm start
 
 ## Running Scheduler API
 
-```sh
 Fork and clone https://github.com/lighthouse-labs/scheduler-api
 Setup DB based on Scheduler API README
+
+```sh
 npm start
 ```
 
