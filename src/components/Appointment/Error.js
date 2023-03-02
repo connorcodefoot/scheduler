@@ -1,5 +1,6 @@
 import React from "react";
 
+// Renders when an API request fails for deleting or saving an appointment
 export default function Error(props) {
 
   return (

@@ -1,4 +1,6 @@
 
+
+// Synthesize data from API to ensure that it conforms to function requirements within the application
 export function getAppointmentsForDay(state, day) {
 
   let appointments = [];

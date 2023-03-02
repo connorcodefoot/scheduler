@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
+
+// Represents a new or edited interview. This functionality will be the same for the aforementioned here, but will have different outcomes upon saving. See Appointments/index.js for the difference in functionality. 
 export default function Form (props) { 
 
   const [student, setStudent] = useState(props.student || "");

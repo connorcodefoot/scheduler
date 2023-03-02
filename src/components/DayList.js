@@ -2,6 +2,7 @@ import React from "react";
 import DayListItem from "./DayListItem";
 
 
+// Represents the list of of days within the siderbar on the front end
 export default function DayList(props) {
 
   const dayListItems = props.days.map((days) => {

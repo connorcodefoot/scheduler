@@ -6,6 +6,8 @@ import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersByDay } from "helpers/selectors";
 import useApplicationData from "../hooks/useApplicationData"
 
+
+// Client side application. Controller for state and initial data is imported from useApplicationData hook
 export default function Application(props) {
 
   const {

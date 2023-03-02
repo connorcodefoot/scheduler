@@ -3,6 +3,7 @@ import { useState } from "react";
 import React from "react";
 
 
+// This function centralizes the control of state for the appointment component
 export default function useVisualMode (initial) {
 
   const [mode, setMode] = useState(initial)

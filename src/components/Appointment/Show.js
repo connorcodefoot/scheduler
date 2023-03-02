@@ -1,5 +1,7 @@
 import React from "react";
 
+
+// Represents a view of a booked interview for an appointment
 export default function Show(props) {
   return (<main className="appointment__card appointment__card--show">
     <section className="appointment__card-left">

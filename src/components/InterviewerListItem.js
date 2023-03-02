@@ -2,6 +2,7 @@ import React from "react";
 import "components/InterviewerListItem.scss"
 import classNames from "classnames";
 
+// Represents the interviewers that will show in the interviewList for a selected day
 export default function InterviewerListItem(props) {
 
   const interviewerClass = classNames("interviewers__item", {

@@ -1,5 +1,6 @@
 import React from "react";
 
+// Represents the view that will show when a user attempts to save or delete an interview
 export default function Status(props) {
 
   return (

@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "components/Button";
 
+
+// View that is show when a user attempts to delete an existing appointment
 export default function Confirm(props) {
 
   return (

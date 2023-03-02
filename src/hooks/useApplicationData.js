@@ -5,6 +5,7 @@ import { useState } from "react";
 
 
 
+// Centralize application data into one function
 export default function useApplicationData() {
 
   const setDay = day => { setState({ ...state, day }); };
@@ -34,6 +35,7 @@ export default function useApplicationData() {
       });
   }, []);
 
+  // Update the data for a given interview
   function editInterview(id, interview) {
 
     return Axios.put(`/api/appointments/${id}`, { interview })
@@ -57,6 +59,7 @@ export default function useApplicationData() {
       .catch((err) => {return 'error'});
   }
 
+  // Book a new interview
   function bookInterview(id, interview) {
 
     return Axios.put(`/api/appointments/${id}`, { interview })
@@ -82,8 +85,8 @@ export default function useApplicationData() {
       })
       .catch((err) => {return 'error'});
   }
-
-
+  
+  // Delete an existing interview
   function cancelInterview(id) {
 
     return Axios.delete(`/api/appointments/${id}`)
@@ -100,6 +103,8 @@ export default function useApplicationData() {
       .catch((err) => {return 'error'});
   }
 
+
+  // Update the number of appointment spots available for the day. This function is only called by bookInterview and cancelInterview
   function updateSpots(id, action) {
 
     const stateCopy = { ...state };

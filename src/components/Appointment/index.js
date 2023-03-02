@@ -21,6 +21,7 @@ const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
 
+// Handles the rendering of appointment based on state, mode and requests
 export default function Appointment(props) {
 
   const { mode, transition, back } = useVisualMode(
