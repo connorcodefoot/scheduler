@@ -3,8 +3,6 @@ import React from "react";
 import Axios from "axios";
 import { useState } from "react";
 
-
-
 // Centralize application data into one function
 export default function useApplicationData() {
 
@@ -102,7 +100,6 @@ export default function useApplicationData() {
       })
       .catch((err) => {return 'error'});
   }
-
 
   // Update the number of appointment spots available for the day. This function is only called by bookInterview and cancelInterview
   function updateSpots(id, action) {

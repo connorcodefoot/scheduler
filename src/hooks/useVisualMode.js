@@ -2,7 +2,6 @@
 import { useState } from "react";
 import React from "react";
 
-
 // This function centralizes the control of state for the appointment component
 export default function useVisualMode (initial) {
 
@@ -11,7 +10,6 @@ export default function useVisualMode (initial) {
 
   function transition(mode, replace = false) {
 
-        
     if(replace) {
 
       setMode(mode)
@@ -35,9 +33,7 @@ export default function useVisualMode (initial) {
     setMode(history[history.length - 1])
 
   }
-
   return { mode, transition, back}
 }
-
 
 // [initial, transition, transition, transition, transition, transition]

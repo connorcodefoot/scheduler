@@ -2,17 +2,12 @@ import React from "react";
 import "components/InterviewerList.scss";
 import InterviewerListItem from "./InterviewerListItem";
 
-
-
-
 // Represents the list of interviewers seen for each appointment (Select new or edit appointment)
 export default function InterviewerList(props) {
 
-  
-
   const listOfInterviewers = props.interviewers.map((interviewers) => {
-    
-    return <InterviewerListItem 
+
+    return <InterviewerListItem
       key={interviewers.id}
       name={interviewers.name}
       avatar={interviewers.avatar}

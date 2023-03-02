@@ -4,7 +4,7 @@ import DayList from "./DayList";
 import "components/Appointment";
 import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersByDay } from "helpers/selectors";
-import useApplicationData from "../hooks/useApplicationData"
+import useApplicationData from "../hooks/useApplicationData";
 
 
 // Client side application. Controller for state and initial data is imported from useApplicationData hook
@@ -18,11 +18,9 @@ export default function Application(props) {
     editInterview
   } = useApplicationData();
 
-
   const interviewers = getInterviewersByDay(state, state.day);
 
-
-  const appointments = getAppointmentsForDay(state, state.day).map              ((appointment) => {
+  const appointments = getAppointmentsForDay(state, state.day).map((appointment) => {
 
     return (
       <Appointment
@@ -34,7 +32,7 @@ export default function Application(props) {
         bookInterview={bookInterview}
         cancelInterview={cancelInterview}
         editInterview={editInterview}
-        />
+      />
     );
   });
 
