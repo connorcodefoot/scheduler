@@ -64,6 +64,8 @@ export default function Appointment(props) {
 
   function editInterview(name, interviewer) {
 
+    transition(SAVING)
+
     const interview = {
       student: name,
       interviewer
@@ -135,7 +137,7 @@ export default function Appointment(props) {
 
         {(mode === ERROR_DELETE || mode === ERROR_SAVE) && (
           <Error
-            message={props.message}
+            message="Sorry, the request failed, please try again"
             onClose={() => back()}
           />
 
