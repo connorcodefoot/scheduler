@@ -60,7 +60,7 @@ npm run Cypress
 ## Views
 
 ```sh
-!["Scheduler app view"](https://github.com/connorcodefoot/scheduler/blob/master/docs/Scheduler-app.png)
+!["Scheduler app view"](https://raw.githubusercontent.com/connorcodefoot/scheduler/master/docs/Scheduler-app.png)
 !["New appointment"](https://github.com/connorcodefoot/scheduler/blob/master/docs/Scheduler-new.png)
 !["Day List"](https://github.com/connorcodefoot/scheduler/blob/master/docs/Scheduler-daylist.png)
 
