@@ -14,7 +14,7 @@ Future considerations for the project include a view specific to a logged in use
 ## Technical Features
 
 - Designed using Storybook
-- App runs on a series of interwoven React components
+- React
 - API (Not built by me) for Postgres DB
 - Jest unit and integration tests
 - Cypress integration tests
